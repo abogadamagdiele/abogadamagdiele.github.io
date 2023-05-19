@@ -3,9 +3,20 @@
     margin:0;
     padding:0;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    max-width: 1500px;
+    margin-inline: auto;
+    min-height: 100vh;
+}
 img {
     display: block;
 }
-html {
-    scroll-behavior: smooth;
+section, footer {
+    margin-inline:auto;
+    width:95%;
+    min-width:280px; 
 }
