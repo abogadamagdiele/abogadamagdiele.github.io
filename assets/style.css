@@ -3,7 +3,9 @@
     margin:0;
     padding:0;
 }
-
+:root {
+    --background--mask: rgba(10, 10, 196,0.5);
+}
 html {
     scroll-behavior: smooth;
 }
@@ -16,7 +18,13 @@ img {
     display: block;
 }
 section, footer {
-    margin-inline:auto;
-    width:95%;
-    min-width:280px; 
+    padding-inline: 40px;
+        
+}
+
+.hero {
+    background-image: linear-gradient(var(--background--mask),var(--background--mask)),url("escritura.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
 }
