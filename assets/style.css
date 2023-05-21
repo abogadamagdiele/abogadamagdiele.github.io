@@ -5,7 +5,7 @@
 }
 :root {
     --background--mask: rgba(12, 12, 129, 0.8);
-    --color--formask: rgb(212, 183, 14);
+    --color--formask: rgb(224, 69, 0);
     --font--color--formask: white;
 
 }
@@ -42,8 +42,15 @@ section, footer, header {
 }
 
         /* elements */
+
+.subtitle {
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+
+}
 .paragraph {
-    font-size:1.5rem;
+    font-size:1.2rem;
     line-height: 1.4 ;
 }
 
@@ -93,7 +100,9 @@ section, footer, header {
 /* end hero */
 
 /* SERVICIOS SECTION */
-.card-container {
+
+
+.card-container, .flex-inline {
 
     display:flex;
     flex-wrap: wrap;
@@ -101,26 +110,27 @@ section, footer, header {
     justify-content: center;
     gap: 30px;
 }
-
+        /* card container sub-section */
 .card {
-
+    position:relative;
+   
     width: min(370px, 100%);
     background-color: rgb(196, 183, 183);
     border-radius: 0.2em;
 
- 
-
+    overflow: hidden;
 
 }
 .card-header {
+    background-color: inherit;
     cursor: pointer;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     gap:10px;
 
-       /* para igualar antes de wrap */
-       min-height: 190px;
+    /* para igualar antes de wrap */
+    min-height: 180px;
 
     position: relative;
     overflow: hidden;
@@ -161,9 +171,35 @@ section, footer, header {
     color: var(--font--color--formask);
 }
 .card-content {
-    --margin-card--content: 15px;
-    padding-block:var(--margin-card--content);
-    margin-inline: var(--margin-card--content);
+    width:100%;
+    background-color: inherit;
+
+    position: relative;
+    
+    --margin-card--content: 10px;
+
+    margin-inline:var(--margin-card--content);
+
+    max-height: 0;
+
+    transition: max-height .4s ease-in,
+    padding .4s ease-in;
+
+    
+}
+.card-content::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: calc(-1 * var(--margin-card--content));
+    width: calc(100% + var(--margin-card--content) * 2);
+    height: 4px;
+    background-color: white;
+}
+
+.card-content.active {
+    max-height: 220px;
+    padding-block: var(--margin-card--content);
 }
 
 .card-content ul {
@@ -176,6 +212,70 @@ section, footer, header {
 
 }
 
+@media (min-width:850px) {
+    .card {
+        overflow: unset;
+    }
+    .card-header {
+        min-height: unset;
+        max-height: 180px;
+        z-index:50;
+    }
+    .card-content {
+        /* iguala altura tanto entre .card-content como con card-header */
+        min-height: 180px;
+        width:100%;
+        background-color: inherit;
+    
+        position: absolute;
+        bottom: 0;
+        left:0;
+        right:0;
+        z-index: 10;
+        
+        margin: 0;
+        padding:var(--margin-card--content);
+    
+        /* ayuda a ocultar el texto */
+        max-height: 0;
+    
+        transform: translateY(0%);
+        transition: transform .4s ease-in,
+        max-height .4s ease-in,
+        padding .4s ease-in;    
+    }
+
+    .card-content.active {
+        max-height: 200px;
+        height:200px;
+        transform: translateY(100%);
+    
+    }
+
+}
+        /* end .card-container */
+
+        /* flex-inline subsection */
+
+.flex-inline {
+    margin-top: 30px;
+}
+.flex-inline figure img {
+    width: 100%;
+    object-fit: cover;
+}
+.flex-inline figure {
+    width: clamp(220px, 100%, 380px);
+}
+.flex-inline .textpage {
+    width: clamp(220px, 100%, 410px);
+}
+
+.flex-inline .textpage .paragraph {
+    margin-bottom: 30px;
+}
+
+        /* end .flex-inline */
 
 /* end servicios */
 
@@ -190,14 +290,20 @@ section, footer, header {
 /* MAPA SECTION */
 .mapa {
     text-align: center;
+    display:grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px) );
+    justify-content: center;
 
 }
-.mapa-container {
+.mapa-container, .form-container {
     margin:auto;
-    width: min(100%, 500px);
+    /* max-width: 500px; */
+    width: min(100%, 400px);
 }
 
-.mapa-container iframe {
+
+iframe {
 width:100%;
 }
 /* end mapa */
