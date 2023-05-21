@@ -93,42 +93,90 @@ section, footer, header {
 /* end hero */
 
 /* SERVICIOS SECTION */
+.card-container {
+
+    display:flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    gap: 30px;
+}
+
 .card {
-    background-color: ghostwhite;
+
+    width: min(370px, 100%);
+    background-color: rgb(196, 183, 183);
     border-radius: 0.2em;
+
+ 
+
+
 }
 .card-header {
+    cursor: pointer;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-around;
     gap:10px;
+
+       /* para igualar antes de wrap */
+       min-height: 190px;
 
     position: relative;
     overflow: hidden;
 }
+.card-header-text {
+    width: 240px;
+}
+
 .card-header .symbol {
     min-width: 35px;
+
     text-align: right;
 }
 .card-header .symbol i {
     font-size:2rem;
 }
+
+
 .card-header::after {
     font-size: 2rem;
     font-weight: bolder;
 
     content: "+";
     position:absolute;
-    bottom: -1rem;
-    right: -0.5rem;
+    bottom: -2.1rem;
+    right: -3.2rem ;
 
     
-    padding: 0 1rem 1rem 0.5rem;
+    padding: 0.5rem 4rem 2rem 1rem;
     border-radius: 50%;
     background-color: var(--color--formask);
-
-    display: grid;
-    place-content: top left;
+    ;
+    transition: background-color 200ms ease-out, color 200ms ease-out;
 }
+
+.card-header:hover::after {
+    background-color: var(--background--mask);
+    color: var(--font--color--formask);
+}
+.card-content {
+    --margin-card--content: 15px;
+    padding-block:var(--margin-card--content);
+    margin-inline: var(--margin-card--content);
+}
+
+.card-content ul {
+    list-style-position: inside;
+    display:grid;
+    gap:7px;
+}
+.card-content ul li {
+    text-align: left;
+
+}
+
+
 /* end servicios */
 
 
@@ -137,3 +185,19 @@ section, footer, header {
     background-position-y: 35%;
     background-image: linear-gradient(var(--background--mask),var(--background--mask)),url("justicia.jpg");    
 }
+
+
+/* MAPA SECTION */
+.mapa {
+    text-align: center;
+
+}
+.mapa-container {
+    margin:auto;
+    width: min(100%, 500px);
+}
+
+.mapa-container iframe {
+width:100%;
+}
+/* end mapa */
