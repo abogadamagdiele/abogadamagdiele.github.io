@@ -4,7 +4,10 @@
     padding:0;
 }
 :root {
-    --background--mask: rgba(10, 10, 196,0.5);
+    --background--mask: rgba(12, 12, 129, 0.8);
+    --color--formask: rgb(212, 183, 14);
+    --font--color--formask: white;
+
 }
 html {
     scroll-behavior: smooth;
@@ -17,14 +20,120 @@ body {
 img {
     display: block;
 }
-section, footer {
-    padding-inline: 40px;
+section, footer, header {
+    width:100%;
+    padding: 30px;
         
 }
 
-.hero {
-    background-image: linear-gradient(var(--background--mask),var(--background--mask)),url("escritura.jpg");
-    background-size: cover;
+
+
+/* reutilizable */
+        /* general */
+.centred {
+    display: block;
+    margin: auto;
+}
+
+.bg-img {
+    background-size:cover;
     background-position: center;
     min-height: 80vh;
+}
+
+        /* elements */
+.paragraph {
+    font-size:1.5rem;
+    line-height: 1.4 ;
+}
+
+.btn {
+    background-color: var(--color--formask);
+    color: var(--font--color--formask);
+
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    padding: 1em;
+    border-radius:0.2em;
+    border: 1px solid black;
+}
+/* end reutilizable */
+
+/* HERO SECTION */
+.hero {
+    background-image: linear-gradient(var(--background--mask),var(--background--mask)),url("escritura.jpg");    
+    color: var(--font--color--formask);
+    
+    display: grid;
+    place-content: center;
+    
+    position: relative;
+}
+
+.hero .text-container {
+    display: grid;    
+    gap: 20px;   
+}
+
+
+.name {
+    color: var(--color--formask);
+    font-size: 1.8rem;
+}
+
+.title {
+    font-size: 2.2rem;
+}
+
+.hero .btn {
+    margin-top: 30px;
+}
+/* end hero */
+
+/* SERVICIOS SECTION */
+.card {
+    background-color: ghostwhite;
+    border-radius: 0.2em;
+}
+.card-header {
+    display: flex;
+    justify-content: space-around;
+    gap:10px;
+
+    position: relative;
+    overflow: hidden;
+}
+.card-header .symbol {
+    min-width: 35px;
+    text-align: right;
+}
+.card-header .symbol i {
+    font-size:2rem;
+}
+.card-header::after {
+    font-size: 2rem;
+    font-weight: bolder;
+
+    content: "+";
+    position:absolute;
+    bottom: -1rem;
+    right: -0.5rem;
+
+    
+    padding: 0 1rem 1rem 0.5rem;
+    border-radius: 50%;
+    background-color: var(--color--formask);
+
+    display: grid;
+    place-content: top left;
+}
+/* end servicios */
+
+
+.faq {
+    background-position-x: 20%;
+    background-position-y: 35%;
+    background-image: linear-gradient(var(--background--mask),var(--background--mask)),url("justicia.jpg");    
 }
