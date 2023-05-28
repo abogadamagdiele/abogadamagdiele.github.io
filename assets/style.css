@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
 *, ::after, ::before {
     box-sizing: border-box;
     margin:0;
@@ -7,10 +10,12 @@
     --background--mask: rgba(12, 12, 129, 0.8);
     --color--formask: rgb(224, 69, 0);
     --font--color--formask: white;
+    --color--card: rgb(196, 183, 183);
 
 }
 html {
     scroll-behavior: smooth;
+    font-family: "Nunito", sans-serif;
 }
 body {
     max-width: 1500px;
@@ -112,17 +117,24 @@ section, footer, header {
 }
         /* card container sub-section */
 .card {
+    --card--border--radius: 5px;
+    border-radius: var(--card--border--radius);
+
+
     position:relative;
    
     width: min(370px, 100%);
-    background-color: rgb(196, 183, 183);
-    border-radius: 0.2em;
+    /* background-color: rgb(196, 183, 183); */
 
     overflow: hidden;
 
 }
 .card-header {
-    background-color: inherit;
+    border-radius: var(--card--border--radius);
+    background-color: var(--color--card);
+    border: 2px solid black;
+
+
     cursor: pointer;
     display: flex;
     flex-flow: row wrap;
@@ -171,37 +183,42 @@ section, footer, header {
     color: var(--font--color--formask);
 }
 .card-content {
-    width:100%;
-    background-color: inherit;
+    --margin-card--content: 20px;
 
+    background-color: var(--color--card);
+    width:100%;
     position: relative;
     
-    --margin-card--content: 10px;
-
-    margin-inline:var(--margin-card--content);
+    border-radius: var(--card--border--radius);
+    
+    padding:0;
 
     max-height: 0;
-
+    margin-top: 5px;
+    /* transform: translateY(0px); */
     transition: max-height .4s ease-in,
-    padding .4s ease-in;
-
+    padding .4s, transform .4s,
+    border .1s;
     
+    
+  
 }
-.card-content::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: calc(-1 * var(--margin-card--content));
-    width: calc(100% + var(--margin-card--content) * 2);
-    height: 4px;
-    background-color: white;
+.card-content :is(ul,p) {
+    opacity: 0;
+    margin-inline: var(--margin-card--content);
+    transition: opacity .2s;
 }
 
 .card-content.active {
-    max-height: 220px;
-    padding-block: var(--margin-card--content);
-}
+    max-height: 350px;
 
+    padding-block: var(--margin-card--content);
+    border: 2px solid black;
+
+}
+.card-content.active :is(ul,p) {
+    opacity:1;
+}
 .card-content ul {
     list-style-position: inside;
     display:grid;
@@ -212,20 +229,47 @@ section, footer, header {
 
 }
 
+/* end SERVICIOS section */
+
+/* FAQ SECTION */
+
+.textpage {
+    display:flex;
+    flex-direction: column;
+}
+.textpage .card {
+    margin-bottom: 20px;
+    
+}
+.textpage .card-content.active {
+    max-height: 400px;
+}
+
+/* end FAQ section */
 @media (min-width:850px) {
-    .card {
+
+    .hero {
+        padding-bottom: 160px;
+    }
+    .servicios {
+        position: relative;
+        top: -140px;
+        margin-bottom: -140px;
+    }
+
+    .card-container .card {
         overflow: unset;
     }
-    .card-header {
-        min-height: unset;
-        max-height: 180px;
+    .card-container .card-header {
+        min-height: 240px;
+        /* max-height: 180px; */
         z-index:50;
     }
-    .card-content {
+    .card-container .card-content {
         /* iguala altura tanto entre .card-content como con card-header */
-        min-height: 180px;
+        /* la altura esta determinada por esta propiedad */
+        min-height: 230px;
         width:100%;
-        background-color: inherit;
     
         position: absolute;
         bottom: 0;
@@ -234,21 +278,19 @@ section, footer, header {
         z-index: 10;
         
         margin: 0;
-        padding:var(--margin-card--content);
     
         /* ayuda a ocultar el texto */
-        max-height: 0;
+        /* max-height: 0; */
     
         transform: translateY(0%);
         transition: transform .4s ease-in,
-        max-height .4s ease-in,
-        padding .4s ease-in;    
+        max-height .4s ease-in;    
     }
 
-    .card-content.active {
-        max-height: 200px;
+    .card-container .card-content.active {
+        max-height: 250px;
         height:200px;
-        transform: translateY(100%);
+        transform: translateY(102%);
     
     }
 
