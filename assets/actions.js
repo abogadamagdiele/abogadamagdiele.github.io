@@ -6,6 +6,14 @@ document.addEventListener("DOMContentLoaded",() => {
         });
     });
     
+    // navbar
+    // https://www.youtube.com/watch?v=dIFNHeHTja0&list=PLzBaHDKdyqYHOYsN9lMjfQgjRbnziuN7k&index=9
+    const hamburguer = document.querySelector(".hamburguer");
+    const navbar = document.querySelector(".nav");
+    hamburguer.onclick = () => {
+        navbar.classList.toggle("active");
+    }
+
     // formulario de contacto
     const formContacto = document.getElementById("form-contacto")
     formContacto.addEventListener("submit", (event) => {
