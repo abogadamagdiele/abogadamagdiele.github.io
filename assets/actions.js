@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded",() => {
         event.preventDefault()
 
         var formData = new FormData(formContacto)
-        fetch("http://saladecontrol.pythonanywhere.com/registrar-contacto" , {
+        fetch("https://saladecontrol.pythonanywhere.com/registrar-contacto" , {
             method: "POST",
             body: formData,
         })
