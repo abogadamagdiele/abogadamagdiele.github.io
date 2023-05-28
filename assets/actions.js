@@ -6,5 +6,27 @@ document.addEventListener("DOMContentLoaded",() => {
         });
     });
     
+    // formulario de contacto
+    const formContacto = document.getElementById("form-contacto")
+    formContacto.addEventListener("submit", (event) => {
+        event.preventDefault()
 
+        var formData = new FormData(formContacto)
+        fetch("http://saladecontrol.pythonanywhere.com/registrar-contacto" , {
+            method: "POST",
+            body: formData,
+        })
+        .then((response) => {
+            if (response.ok) {
+                console.log("submit succesfully");
+            }
+            else {
+                console.log("submit error");
+            }
+        })
+        .catch((error) => {
+            console.log("conection error");
+        })
+
+    });
 });
