@@ -146,8 +146,15 @@ section, footer, header {
 .nav.active .navbar-nav {
     opacity:1;
 }
+.nav-item {
+    margin-block: 40px;
+}
 .nav-link {
-    margin-bottom: 15px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* margin-bottom: 15px; */
 }
 
 .hamburguer {
@@ -483,10 +490,12 @@ iframe {
         opacity: unset;
         text-align: unset;
     }
-    
+    .nav-item {
+        margin: unset;
+    }
     .nav-link {
-        text-decoration: none;
         display: block;
+        font-weight: unset;
         color: ghostwhite;
         font-size: 20px;
     
