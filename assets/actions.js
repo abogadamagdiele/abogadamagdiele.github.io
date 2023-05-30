@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded",() => {
+
+    // google analitycs
+
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RJENLT127V');
+
+
+
+
     document.querySelectorAll(".card-header").forEach((cardHeader) => {
         cardHeader.addEventListener("click", () => {
             // cardHeader.parentNode.classList.toggle("active");
@@ -6,14 +18,8 @@ document.addEventListener("DOMContentLoaded",() => {
         });
     });
     
+    
     // navbar
-    // https://www.youtube.com/watch?v=dIFNHeHTja0&list=PLzBaHDKdyqYHOYsN9lMjfQgjRbnziuN7k&index=9
-    // const hamburguer = document.querySelector(".hamburguer");
-    // const navbar = document.querySelector(".nav");
-    // hamburguer.onclick = () => {
-    //     navbar.classList.toggle("active");
-    // }
-
     
         const menuBtn = document.querySelector(".hamburguer");
         const menuBtnIcon = document.querySelector(".hamburguer i");
